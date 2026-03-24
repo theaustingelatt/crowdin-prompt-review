@@ -385,92 +385,33 @@ function exportChoices() {
 function renderTech() {
   const container = document.getElementById('tech-content');
   const diffs = diffStrings();
-  const total = STRINGS.length;
-  const noDataAtAll = STRINGS.every(s => !hasData(s));
+  const reviewed = diffs.filter(s => choices[s.id]);
+  const basicWins = reviewed.filter(s => sides[s.id][choices[s.id]].source === 'basic').length;
+  const pipelineWins = reviewed.filter(s => sides[s.id][choices[s.id]].source === 'pipeline').length;
+  const total = reviewed.length;
 
-  const reviewed = diffs.filter(s => choices[s.id]).length;
-  const bWins = diffs.filter(s => choices[s.id] === 'b').length;
-  const aWins = diffs.filter(s => choices[s.id] === 'a').length;
-
-  let html = '';
-
-  if (noDataAtAll) {
-    html = `
-      <div class="notice">
-        <strong>No translation data yet.</strong> Paste workflow outputs into the <code>STRINGS</code> array in the HTML source file.
-        Once data is added, this view will show statistics, a rule breakdown, and the full comparison table.
-      </div>
+  if (total === 0) {
+    container.innerHTML = `
       <div class="empty-state">
         <div class="icon">📊</div>
-        <h3>Tech summary will appear here</h3>
+        <h3>Awaiting translator results</h3>
         <p>This view populates automatically when you open the results link sent by the translator.</p>
       </div>`;
-    container.innerHTML = html;
     return;
   }
 
-  // Stats
-  html += `
-    <div class="stats-grid">
-      <div class="stat-card"><div class="stat-n grey">${total}</div><div class="stat-l">Total test strings</div></div>
-      <div class="stat-card"><div class="stat-n blue">${diffs.length}</div><div class="stat-l">Strings that differed</div></div>
-      <div class="stat-card"><div class="stat-n green">${bWins}</div><div class="stat-l">Preferred B (custom)</div></div>
-      <div class="stat-card"><div class="stat-n grey">${aWins}</div><div class="stat-l">Preferred A (current)</div></div>
-    </div>`;
-
-  // Rule breakdown
-  const rules = [...new Set(STRINGS.map(s => s.rule))];
-  html += `<div class="section"><h2>Breakdown by rule</h2>`;
-  rules.forEach(rule => {
-    const inRule = diffs.filter(s => s.rule === rule);
-    const bInRule = inRule.filter(s => choices[s.id] === 'b').length;
-    const pct = inRule.length ? Math.round((bInRule / inRule.length) * 100) : 0;
-    html += `
-      <div class="rule-row">
-        <span class="rule-name">${escHtml(rule)}</span>
-        <div class="rule-bar-wrap"><div class="rule-bar" style="width:${pct}%"></div></div>
-        <span class="rule-meta">${bInRule}/${inRule.length} preferred B</span>
-      </div>`;
-  });
-  html += `</div>`;
-
-  // Full table
-  html += `
-    <div class="section">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.75rem;">
-        <h2 style="margin:0">All differing strings</h2>
-        <div class="btn-group">
-          <button class="btn btn-primary" onclick="exportCSV()">Export CSV</button>
-        </div>
-      </div>`;
-
-  if (diffs.length === 0) {
-    html += `<div style="text-align:center;padding:2rem;color:var(--muted);font-size:0.88rem;">No differences found in the data.</div>`;
-  } else {
-    html += `
-      <div class="results-header">
-        <span>ID</span><span>Source (EN)</span><span>${escHtml(META.label_a)} (A)</span><span>${escHtml(META.label_b)} (B)</span><span>Translator</span>
-      </div>`;
-    diffs.forEach(s => {
-      const c = choices[s.id];
-      const badge = c === 'a'
-        ? `<span class="result-choice a">A — current</span>`
-        : c === 'b'
-        ? `<span class="result-choice b">B — custom</span>`
-        : `<span class="result-choice none">—</span>`;
-      html += `
-        <div class="result-row">
-          <span class="result-id">${s.id}<br><span style="color:var(--muted);font-size:0.65rem;">${escHtml(s.rule)}</span></span>
-          <span>${escHtml(s.source)}</span>
-          <span>${escHtml(s.translation_a)}</span>
-          <span>${escHtml(s.translation_b)}</span>
-          <span>${badge}</span>
-        </div>`;
-    });
-  }
-  html += `</div>`;
-
-  container.innerHTML = html;
+  container.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:480px;margin:3rem auto;text-align:center;">
+      <div class="stat-card">
+        <div class="stat-n grey" style="font-size:3.5rem">${basicWins}</div>
+        <div class="stat-l" style="font-size:1rem;margin-top:0.5rem">Basic Prompt</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n green" style="font-size:3.5rem">${pipelineWins}</div>
+        <div class="stat-l" style="font-size:1rem;margin-top:0.5rem">AI Pipeline</div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:0.85rem;">Based on ${total} of ${diffs.length} strings reviewed</p>`;
 }
 
 // ── Import ────────────────────────────────────────────────
