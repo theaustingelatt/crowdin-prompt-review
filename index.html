@@ -6,16 +6,16 @@
 <title>Translation Review — French Prompt Comparison</title>
 <style>
 :root {
-  --bg: #f8f9fa;
+  --bg: #e8edf2;
   --surface: #ffffff;
-  --border: #e2e8f0;
-  --text: #1a202c;
-  --muted: #718096;
-  --a: #3b82f6;
-  --b: #10b981;
-  --a-bg: #eff6ff;
-  --b-bg: #f0fdf4;
-  --rule-bg: #f1f5f9;
+  --border: #c8d0da;
+  --text: #0f1923;
+  --muted: #5a6a7a;
+  --a: #2563eb;
+  --b: #059669;
+  --a-bg: #dbeafe;
+  --b-bg: #d1fae5;
+  --rule-bg: #e2e8f0;
   --warn-bg: #fff7ed;
   --warn-border: #fed7aa;
   --warn-text: #9a3412;
@@ -332,10 +332,6 @@ function renderTranslator() {
     const c = choices[s.id];
     html += `
       <div class="card" id="card-${s.id}">
-        <div class="card-meta">
-          <span class="card-id">${s.id}</span>
-        </div>
-        <div class="source-label">English source</div>
         <div class="source-text">${escHtml(s.source)}</div>
         <div class="translations">
           <div class="t-option${c === 'a' ? ' chosen-a' : ''}" onclick="choose('${s.id}','a')" title="">
