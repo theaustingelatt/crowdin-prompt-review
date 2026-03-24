@@ -210,7 +210,7 @@ STRINGS.forEach(s => { s.sides = sides[s.id]; });
   <div class="header-inner">
     <div class="header-title">
       <h1>French Translation Review</h1>
-      <p id="header-sub">A vs B comparison — customised prompt evaluation</p>
+      <p id="header-sub"></p>
     </div>
     <nav class="tabs" id="nav-tabs">
       <button class="tab active" onclick="switchView('translator')">Translator</button>
@@ -436,7 +436,7 @@ function escHtml(str) {
 
 // ── Init ──────────────────────────────────────────────────
 document.getElementById('header-sub').textContent =
-  `Translation review  ·  ${META.language}`;
+  ``;
 
 // Tech Summary is hidden by default — append ?tech to the URL to reveal it.
 const isTechMode = new URLSearchParams(window.location.search).has('tech');
