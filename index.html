@@ -197,9 +197,9 @@ let choices = {}; // { "FR_B001": "a", "FR_T002": "b", ... }
       <h1>French Translation Review</h1>
       <p id="header-sub">A vs B comparison — customised prompt evaluation</p>
     </div>
-    <nav class="tabs">
+    <nav class="tabs" id="nav-tabs">
       <button class="tab active" onclick="switchView('translator')">Translator</button>
-      <button class="tab" onclick="switchView('tech')">Tech Summary</button>
+      <button class="tab" id="tab-tech" style="display:none" onclick="switchView('tech')">Tech Summary</button>
     </nav>
   </div>
 </header>
@@ -516,6 +516,11 @@ function escHtml(str) {
 // ── Init ──────────────────────────────────────────────────
 document.getElementById('header-sub').textContent =
   `${META.label_a}  vs  ${META.label_b}  ·  ${META.language}`;
+
+// Tech Summary is hidden by default — append ?tech to the URL to reveal it.
+if (new URLSearchParams(window.location.search).has('tech')) {
+  document.getElementById('tab-tech').style.display = '';
+}
 
 renderTranslator();
 
