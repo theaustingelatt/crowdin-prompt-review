@@ -188,6 +188,21 @@ const STRINGS = [
 // Translator choices — populated by clicking A/B cards
 // or imported via JSON paste in the Tech view
 let choices = {}; // { "FR_B001": "a", "FR_T002": "b", ... }
+
+// Randomise which side (A or B) each workflow appears on — seeded per string ID
+// so the layout stays stable across re-renders but is blind to the translator.
+// sides[id] = { a: {source:'basic'|'pipeline', text}, b: {source, text} }
+const sides = {};
+STRINGS.forEach(s => {
+  const flip = s.id.split('').reduce((n, c) => n + c.charCodeAt(0), 0) % 2 === 0;
+  sides[s.id] = flip
+    ? { a: { source: 'basic',    text: s.translation_a },
+        b: { source: 'pipeline', text: s.translation_b } }
+    : { a: { source: 'pipeline', text: s.translation_b },
+        b: { source: 'basic',    text: s.translation_a } };
+});
+// Attach to each string for easy access in render
+STRINGS.forEach(s => { s.sides = sides[s.id]; });
 </script>
 
 <!-- ═══ HEADER ═══ -->
@@ -331,20 +346,19 @@ function renderTranslator() {
       <div class="card" id="card-${s.id}">
         <div class="card-meta">
           <span class="card-id">${s.id}</span>
-          <span class="card-rule">${s.rule}</span>
         </div>
         <div class="source-label">English source</div>
         <div class="source-text">${escHtml(s.source)}</div>
         <div class="translations">
-          <div class="t-option${c === 'a' ? ' chosen-a' : ''}" onclick="choose('${s.id}','a')">
+          <div class="t-option${c === 'a' ? ' chosen-a' : ''}" onclick="choose('${s.id}','a')" title="">
             <div class="chosen-badge">chosen</div>
-            <div class="t-label a">A <span>${escHtml(META.label_a)}</span></div>
-            <div class="t-text">${escHtml(s.translation_a)}</div>
+            <div class="t-label a">A</div>
+            <div class="t-text">${escHtml(s.sides.a.text)}</div>
           </div>
-          <div class="t-option${c === 'b' ? ' chosen-b' : ''}" onclick="choose('${s.id}','b')">
+          <div class="t-option${c === 'b' ? ' chosen-b' : ''}" onclick="choose('${s.id}','b')" title="">
             <div class="chosen-badge">chosen</div>
-            <div class="t-label b">B <span>${escHtml(META.label_b)}</span></div>
-            <div class="t-text">${escHtml(s.translation_b)}</div>
+            <div class="t-label b">B</div>
+            <div class="t-text">${escHtml(s.sides.b.text)}</div>
           </div>
         </div>
       </div>`;
@@ -365,7 +379,13 @@ function clearChoices() {
 }
 
 function exportChoices() {
-  const json = JSON.stringify(choices, null, 2);
+  // Resolve a/b back to basic/pipeline so the tech view is unambiguous
+  const resolved = {};
+  Object.keys(choices).forEach(id => {
+    const side = choices[id];
+    resolved[id] = sides[id][side].source;
+  });
+  const json = JSON.stringify(resolved, null, 2);
   navigator.clipboard.writeText(json).then(() => {
     toast('Choices copied to clipboard ✓');
   }).catch(() => {
@@ -515,7 +535,7 @@ function escHtml(str) {
 
 // ── Init ──────────────────────────────────────────────────
 document.getElementById('header-sub').textContent =
-  `${META.label_a}  vs  ${META.label_b}  ·  ${META.language}`;
+  `Translation review  ·  ${META.language}`;
 
 // Tech Summary is hidden by default — append ?tech to the URL to reveal it.
 if (new URLSearchParams(window.location.search).has('tech')) {
