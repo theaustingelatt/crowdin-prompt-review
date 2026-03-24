@@ -153,51 +153,35 @@ const META = {
   label_b: "Customised French prompt"
 };
 
-// ── PASTE YOUR DATA HERE ──────────────────────────────────
-// translation_a = output from current workflow (no custom prompt)
-// translation_b = output from customised French prompt
-// Leave both empty ("") until you have real outputs.
-// ─────────────────────────────────────────────────────────
 const STRINGS = [
-  // RULE 5 — Bible citations
-  { id:"FR_B001", rule:"Rule 5 — Bible citation", source:"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. (John 3:16)", translation_a:"", translation_b:"" },
-  { id:"FR_B002", rule:"Rule 5 — Bible citation", source:"I can do all this through him who gives me strength. (Philippians 4:13)", translation_a:"", translation_b:"" },
-  { id:"FR_B003", rule:"Rule 5 — Bible citation", source:"The Lord is my shepherd, I lack nothing. (Psalm 23:1)", translation_a:"", translation_b:"" },
-  { id:"FR_B004", rule:"Rule 5 — Bible citation", source:"And we know that in all things God works for the good of those who love him. (Romans 8:28)", translation_a:"", translation_b:"" },
-  { id:"FR_B005", rule:"Rule 5 — Bible citation", source:"Come to me, all you who are weary and burdened, and I will give you rest. (Matthew 11:28)", translation_a:"", translation_b:"" },
-
-  // RULE 1 — TU vs VOUS
-  { id:"FR_T001", rule:"Rule 1 — TU vs VOUS", source:"What if you were the answer someone has been waiting for?", translation_a:"", translation_b:"" },
-  { id:"FR_T002", rule:"Rule 1 — TU vs VOUS", source:"You are not alone in this.", translation_a:"", translation_b:"" },
-  { id:"FR_T003", rule:"Rule 1 — TU vs VOUS", source:"Have you ever felt like you didn't belong?", translation_a:"", translation_b:"" },
-  { id:"FR_T004", rule:"Rule 1 — TU vs VOUS", source:"Start a conversation today.", translation_a:"", translation_b:"" },
-  { id:"FR_T005", rule:"Rule 1 — TU vs VOUS", source:"We're so glad you're here.", translation_a:"", translation_b:"" },
-
-  // RULE 2 — Idiom adaptation
-  { id:"FR_I001", rule:"Rule 2 — Idiom adaptation", source:"You bring it up and... crickets.", translation_a:"", translation_b:"" },
-  { id:"FR_I002", rule:"Rule 2 — Idiom adaptation", source:"Move past smalltalk.", translation_a:"", translation_b:"" },
-  { id:"FR_I003", rule:"Rule 2 — Idiom adaptation", source:"Word of mouth still works.", translation_a:"", translation_b:"" },
-  { id:"FR_I004", rule:"Rule 2 — Idiom adaptation", source:"It doesn't have to be a big deal.", translation_a:"", translation_b:"" },
-
-  // RULE 3 — Social media contextual expansion
-  { id:"FR_S001", rule:"Rule 3 — Contextual expansion", source:"Drop a 🙋", translation_a:"", translation_b:"" },
-  { id:"FR_S002", rule:"Rule 3 — Contextual expansion", source:"Tag someone who needs this.", translation_a:"", translation_b:"" },
-  { id:"FR_S003", rule:"Rule 3 — Contextual expansion", source:"Share this.", translation_a:"", translation_b:"" },
-
-  // RULE 6 — Gendered language
-  { id:"FR_G001", rule:"Rule 6 — Gendered language", source:"Tag a friend who needs to hear this.", translation_a:"", translation_b:"" },
-  { id:"FR_G002", rule:"Rule 6 — Gendered language", source:"Invite someone to check out the yesHEis App.", translation_a:"", translation_b:"" },
-  { id:"FR_G003", rule:"Rule 6 — Gendered language", source:"Share this with a neighbour.", translation_a:"", translation_b:"" },
-  { id:"FR_G004", rule:"Rule 6 — Gendered language", source:"Find someone who is searching for answers.", translation_a:"", translation_b:"" },
-
-  // COMBINED — multiple rules
-  { id:"FR_C001", rule:"Rules 5 + 6", source:"Tag a friend who needs to hear this. \"Come to me, all you who are weary and burdened, and I will give you rest.\" Matthew 11:28", translation_a:"", translation_b:"" },
-  { id:"FR_C002", rule:"Rules 1 + 2", source:"You bring it up and... crickets. Start the conversation. Word of mouth still works.", translation_a:"", translation_b:"" },
-  { id:"FR_C003", rule:"Rules 3 + 4 + 6", source:"Download the yesHEis App 📲 Tag a friend who needs this. #follow", translation_a:"", translation_b:"" },
-  { id:"FR_C004", rule:"Rules 1 + 5", source:"Have you ever felt like you didn't belong? You are not alone in this. \"And we know that in all things God works for the good of those who love him.\" Romans 8:28", translation_a:"", translation_b:"" },
-  { id:"FR_C005", rule:"Rules 1 + 2 + 6", source:"What if you were the answer someone has been waiting for? Find a friend and start that conversation today.", translation_a:"", translation_b:"" },
-  { id:"FR_C006", rule:"Rule 4 — Technical", source:"Sarah shared this with you. 🙌", translation_a:"", translation_b:"" },
-  { id:"FR_C007", rule:"Rules 1 + 4", source:"You have 3 friends who use the yesHEis App.", translation_a:"", translation_b:"" },
+  {"id": "FR_B001", "rule": "Rule 5 — Bible citation", "source": "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. (John 3:16)", "translation_a": "Car Dieu a tant aimé le monde qu’il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu’il ait la vie éternelle. (Jean 3:16)", "translation_b": "Car Dieu a tant aimé le monde qu'il a donné son Fils, son unique, pour que tous ceux qui placent leur confiance en lui échappent à la perdition et qu'ils aient la vie éternelle. (Jean 3:16)"},
+  {"id": "FR_B002", "rule": "Rule 5 — Bible citation", "source": "I can do all this through him who gives me strength. (Philippians 4:13)", "translation_a": "Je puis tout par celui qui me fortifie. (Philippiens 4:13)", "translation_b": "Je peux tout, grâce à celui qui me fortifie. (Philippiens 4:13)"},
+  {"id": "FR_B003", "rule": "Rule 5 — Bible citation", "source": "The Lord is my shepherd, I lack nothing. (Psalm 23:1)", "translation_a": "L’Éternel est mon berger : je ne manquerai de rien. (Psaume 23:1)", "translation_b": "L'Eternel est mon berger, je ne manquerai de rien. (Psaume 23:1)"},
+  {"id": "FR_B004", "rule": "Rule 5 — Bible citation", "source": "And we know that in all things God works for the good of those who love him. (Romans 8:28)", "translation_a": "Nous savons, du reste, que toutes choses concourent au bien de ceux qui aiment Dieu. (Romains 8:28)", "translation_b": "Du reste, nous savons que Dieu fait concourir toutes choses au bien de ceux qui l'aiment. (Romains 8:28)"},
+  {"id": "FR_B005", "rule": "Rule 5 — Bible citation", "source": "Come to me, all you who are weary and burdened, and I will give you rest. (Matthew 11:28)", "translation_a": "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. (Matthieu 11:28)", "translation_b": "Venez à moi, vous tous qui êtes accablés sous le poids d'un lourd fardeau, et je vous donnerai du repos. (Matthieu 11:28)"},
+  {"id": "FR_T001", "rule": "Rule 1 — TU vs VOUS", "source": "What if you were the answer someone has been waiting for?", "translation_a": "Et si vous étiez la réponse que quelqu’un attendait ?", "translation_b": "Et si c'était toi la réponse que quelqu'un attendait ?"},
+  {"id": "FR_T002", "rule": "Rule 1 — TU vs VOUS", "source": "You are not alone in this.", "translation_a": "Vous n’êtes pas seul dans cette épreuve.", "translation_b": "Vous n'êtes pas seuls dans tout ça."},
+  {"id": "FR_T003", "rule": "Rule 1 — TU vs VOUS", "source": "Have you ever felt like you didn't belong?", "translation_a": "Avez-vous déjà eu l’impression de ne pas être à votre place ?", "translation_b": "As-tu déjà eu l'impression de ne pas être à ta place ?"},
+  {"id": "FR_T004", "rule": "Rule 1 — TU vs VOUS", "source": "Start a conversation today.", "translation_a": "Commencez une conversation aujourd’hui.", "translation_b": "Lance la conversation aujourd'hui."},
+  {"id": "FR_T005", "rule": "Rule 1 — TU vs VOUS", "source": "We're so glad you're here.", "translation_a": "Nous sommes si heureux que vous soyez là.", "translation_b": "On est tellement contents que tu sois là."},
+  {"id": "FR_I001", "rule": "Rule 2 — Idiom adaptation", "source": "You bring it up and... crickets.", "translation_a": "Vous abordez le sujet et... silence radio.", "translation_b": "Tu en parles et... silence radio."},
+  {"id": "FR_I002", "rule": "Rule 2 — Idiom adaptation", "source": "Move past smalltalk.", "translation_a": "Allez au-delà des banalités.", "translation_b": "Dépasse les conversations de la pluie et du beau temps."},
+  {"id": "FR_I003", "rule": "Rule 2 — Idiom adaptation", "source": "Word of mouth still works.", "translation_a": "Le bouche-à-oreille fonctionne toujours.", "translation_b": "Le bouche à oreille, ça marche encore."},
+  {"id": "FR_I004", "rule": "Rule 2 — Idiom adaptation", "source": "It doesn't have to be a big deal.", "translation_a": "Pas besoin d'en faire toute une histoire.", "translation_b": "Pas besoin d'en faire tout un plat."},
+  {"id": "FR_S001", "rule": "Rule 3 — Contextual expansion", "source": "Drop a 🙋", "translation_a": "Laissez un 🙋", "translation_b": "Mets un 🙋 en commentaire"},
+  {"id": "FR_S002", "rule": "Rule 3 — Contextual expansion", "source": "Tag someone who needs this.", "translation_a": "Identifiez quelqu’un qui a besoin de voir ça.", "translation_b": "Tague quelqu'un qui a besoin de lire ça."},
+  {"id": "FR_S003", "rule": "Rule 3 — Contextual expansion", "source": "Share this.", "translation_a": "Partagez ceci.", "translation_b": "Partage ça."},
+  {"id": "FR_G001", "rule": "Rule 6 — Gendered language", "source": "Tag a friend who needs to hear this.", "translation_a": "Identifiez un ami qui a besoin d’entendre cela.", "translation_b": "Tague un ami qui a besoin d'entendre ça."},
+  {"id": "FR_G002", "rule": "Rule 6 — Gendered language", "source": "Invite someone to check out the yesHEis App.", "translation_a": "Invitez quelqu’un à découvrir l’application yesHEis.", "translation_b": "Invite quelqu'un à découvrir la yesHEis App."},
+  {"id": "FR_G003", "rule": "Rule 6 — Gendered language", "source": "Share this with a neighbour.", "translation_a": "Partagez ceci avec un voisin.", "translation_b": "Partage ça avec un voisin."},
+  {"id": "FR_G004", "rule": "Rule 6 — Gendered language", "source": "Find someone who is searching for answers.", "translation_a": "Trouvez quelqu’un qui cherche des réponses.", "translation_b": "Trouve quelqu'un qui cherche des réponses."},
+  {"id": "FR_C001", "rule": "Rules 5 + 6", "source": "Tag a friend who needs to hear this. \"Come to me, all you who are weary and burdened, and I will give you rest.\" Matthew 11:28", "translation_a": "Identifiez un ami qui a besoin d’entendre cela. \"Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.\" Matthieu 11:28", "translation_b": "Tague un ami qui a besoin d'entendre ça. \"Venez à moi, vous tous qui êtes accablés sous le poids d'un lourd fardeau, et je vous donnerai du repos.\" Matthieu 11:28"},
+  {"id": "FR_C002", "rule": "Rules 1 + 2", "source": "You bring it up and... crickets. Start the conversation. Word of mouth still works.", "translation_a": "Vous abordez le sujet et... silence radio. Lancez la conversation. Le bouche-à-oreille fonctionne toujours.", "translation_b": "Tu en parles et... silence radio. Lance la conversation. Le bouche à oreille, ça marche encore."},
+  {"id": "FR_C003", "rule": "Rules 3 + 4 + 6", "source": "Download the yesHEis App 📲 Tag a friend who needs this. #follow", "translation_a": "Téléchargez l’application yesHEis 📲 Identifiez un ami qui a besoin de cela. #follow", "translation_b": "Télécharge la yesHEis App 📲 Tague un ami qui a besoin de lire ça. #follow"},
+  {"id": "FR_C004", "rule": "Rules 1 + 5", "source": "Have you ever felt like you didn't belong? You are not alone in this. \"And we know that in all things God works for the good of those who love him.\" Romans 8:28", "translation_a": "Vous est-il déjà arrivé de vous sentir à votre place ? Vous n’êtes pas seul dans cette situation. \"Et nous savons que, dans toutes choses, Dieu travaille pour le bien de ceux qui l’aiment.\" Romains 8:28", "translation_b": "Vous avez déjà eu l'impression de ne pas être à votre place ? Vous n'êtes pas seuls dans tout ça. \"Du reste, nous savons que Dieu fait concourir toutes choses au bien de ceux qui l'aiment.\" Romains 8:28"},
+  {"id": "FR_C005", "rule": "Rules 1 + 2 + 6", "source": "What if you were the answer someone has been waiting for? Find a friend and start that conversation today.", "translation_a": "Et si vous étiez la réponse que quelqu’un attendait ? Trouvez un ami et commencez cette conversation aujourd’hui.", "translation_b": "Et si c'était toi la réponse que quelqu'un attendait ? Trouve un ami et lance cette conversation aujourd'hui."},
+  {"id": "FR_C006", "rule": "Rule 4 — Technical", "source": "Sarah shared this with you. 🙌", "translation_a": "Sarah a partagé ceci avec vous. 🙌", "translation_b": "Sarah a partagé ça avec toi. 🙌"},
+  {"id": "FR_C007", "rule": "Rules 1 + 4", "source": "You have 3 friends who use the yesHEis App.", "translation_a": "Vous avez 3 amis qui utilisent l’application yesHEis.", "translation_b": "Tu as 3 amis qui utilisent la yesHEis App."},
 ];
 // ─────────────────────────────────────────────────────────
 
