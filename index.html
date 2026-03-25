@@ -25,7 +25,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 /* ── Header ── */
 .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 20; }
-.header-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .header-title h1 { font-size: 1rem; font-weight: 600; }
 .header-title p { font-size: 0.8rem; color: var(--muted); }
 .tabs { display: flex; gap: 0.2rem; background: var(--bg); padding: 0.2rem; border-radius: 8px; }
@@ -33,7 +33,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .tab.active { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
 /* ── Main ── */
-.main { max-width: 860px; margin: 0 auto; padding: 1.75rem 2rem; }
+.main { max-width: 1400px; margin: 0 auto; padding: 1.75rem 2rem; }
 @media (max-width: 600px) { .main { padding: 1rem; } .header { padding: 1rem; } }
 
 .view { display: none; }
@@ -103,10 +103,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 /* ── Rule breakdown ── */
 .section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
 .section h2 { font-size: 0.95rem; font-weight: 600; margin-bottom: 1.1rem; }
-.rule-row { display: flex; align-items: center; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.rule-row { display: grid; grid-template-columns: 1fr 90px 200px; align-items: center; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
 .rule-row:last-child { border-bottom: none; }
-.rule-name { flex: 1; }
-.rule-bar-wrap { width: 80px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; flex-shrink: 0; }
+.rule-name { min-width: 0; }
+.rule-bar-wrap { width: 90px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
 .rule-bar { height: 100%; background: var(--b); border-radius: 3px; }
 .rule-meta { font-size: 0.75rem; color: var(--muted); white-space: nowrap; }
 
@@ -382,8 +382,6 @@ function renderTech() {
   const container = document.getElementById('tech-content');
   const diffs = diffStrings();
   const reviewed = diffs.filter(s => choices[s.id]);
-  const basicWins = reviewed.filter(s => sides[s.id][choices[s.id]].source === 'basic').length;
-  const pipelineWins = reviewed.filter(s => sides[s.id][choices[s.id]].source === 'pipeline').length;
   const total = reviewed.length;
 
   if (total === 0) {
@@ -396,18 +394,77 @@ function renderTech() {
     return;
   }
 
+  const basicWins    = reviewed.filter(s => sides[s.id][choices[s.id]].source === 'basic').length;
+  const pipelineWins = reviewed.filter(s => sides[s.id][choices[s.id]].source === 'pipeline').length;
+  const pct = Math.round((pipelineWins / total) * 100);
+
+  const cats = [
+    { key: 'T', label: 'Rule 1 — TU / VOUS' },
+    { key: 'I', label: 'Rule 2 — Idiom adaptation' },
+    { key: 'S', label: 'Rule 3 — Contextual expansion' },
+    { key: 'B', label: 'Rule 5 — Bible citation' },
+    { key: 'G', label: 'Rule 6 — Gendered language' },
+    { key: 'C', label: 'Multi-rule strings' },
+  ];
+
+  const catRows = cats.map(cat => {
+    const strings  = reviewed.filter(s => s.id.split('_')[1][0] === cat.key);
+    if (!strings.length) return '';
+    const pipeline = strings.filter(s => sides[s.id][choices[s.id]].source === 'pipeline').length;
+    const basic    = strings.length - pipeline;
+    const winner   = pipeline >= basic ? 'pipeline' : 'basic';
+    const label    = winner === 'pipeline' ? META.label_b : META.label_a;
+    const count    = winner === 'pipeline' ? pipeline : basic;
+    const barPct   = Math.round((pipeline / strings.length) * 100);
+    const color    = winner === 'pipeline' ? 'var(--b)' : 'var(--muted)';
+    const sweep    = count === strings.length;
+    return `
+      <div class="rule-row">
+        <div class="rule-name">${cat.label}</div>
+        <div class="rule-bar-wrap" style="width:90px">
+          <div class="rule-bar" style="width:${barPct}%;background:${color}"></div>
+        </div>
+        <div class="rule-meta">${count}/${strings.length} &rarr; <strong style="color:${color}">${label}</strong></div>
+      </div>`;
+  }).join('');
+
   container.innerHTML = `
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:480px;margin:3rem auto;text-align:center;">
-      <div class="stat-card">
-        <div class="stat-n grey" style="font-size:3.5rem">${basicWins}</div>
-        <div class="stat-l" style="font-size:1rem;margin-top:0.5rem">Basic Prompt</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-n green" style="font-size:3.5rem">${pipelineWins}</div>
-        <div class="stat-l" style="font-size:1rem;margin-top:0.5rem">AI Pipeline</div>
+    <div class="section" style="text-align:center;padding:2rem 1.5rem;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1.25rem;">Overall translator preference</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:4.5rem;font-weight:700;color:var(--b);line-height:1">${pipelineWins}</div>
+          <div style="font-size:0.85rem;color:var(--muted);margin-top:0.35rem">${META.label_b}</div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--border);font-weight:300">vs</div>
+        <div>
+          <div style="font-size:4.5rem;font-weight:700;color:var(--muted);line-height:1">${basicWins}</div>
+          <div style="font-size:0.85rem;color:var(--muted);margin-top:0.35rem">${META.label_a}</div>
+        </div>
       </div>
     </div>
-    <p style="text-align:center;color:var(--muted);font-size:0.85rem;">Based on ${total} of ${diffs.length} strings reviewed</p>`;
+
+    <div class="section">
+      <h2>Breakdown by rule</h2>
+      ${catRows}
+    </div>
+
+    <div class="section">
+      <h2 style="text-align:center;">How this worked</h2>
+      <div style="display:flex;align-items:center;justify-content:center;gap:0.4rem;margin-top:0.75rem;overflow-x:auto;">
+        ${[
+          ['Engage Translators',              '#2563eb'],
+          ['Create Custom Prompt',            '#2563eb'],
+          ['Create Dataset to Test',          '#2563eb'],
+          ['Present A-B Output',              '#2563eb'],
+          ['Analyse Results',                 '#2563eb'],
+          ['Iterate',                         '#2563eb'],
+        ].map(([title, color], i, arr) => `
+          <div style="background:${color}18;border:1.5px solid ${color}55;border-radius:8px;padding:0.55rem 0;width:210px;text-align:center;white-space:nowrap;font-size:0.82rem;font-weight:600;color:${color};">${title}</div>
+          ${i < arr.length - 1 ? `<div style="color:#cbd5e0;font-size:1rem;flex-shrink:0;">&rarr;</div>` : ''}
+        `).join('')}
+      </div>
+    </div>`;
 }
 
 // ── Import ────────────────────────────────────────────────
