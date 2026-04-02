@@ -502,7 +502,7 @@ function exportCSV() {
   const blob = new Blob([csv], {type:'text/csv'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'french-review-results.csv';
+  a.download = 'spanish-review-results.csv';
   a.click();
   toast('CSV downloaded ✓');
 }
