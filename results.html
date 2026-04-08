@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Translation Review — Aggregated Results</title>
+<style>
+:root {
+  --bg: #e8edf2;
+  --surface: #ffffff;
+  --border: #c8d0da;
+  --text: #0f1923;
+  --muted: #5a6a7a;
+  --a: #2563eb;
+  --b: #059669;
+  --a-bg: #dbeafe;
+  --b-bg: #d1fae5;
+  --rule-bg: #e2e8f0;
+  --warn-bg: #fff7ed;
+  --warn-border: #fed7aa;
+  --warn-text: #9a3412;
+  --neither: #64748b;
+  --neither-bg: #f1f5f9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+/* ── Header ── */
+.header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 20; }
+.header-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.header-title h1 { font-size: 1rem; font-weight: 600; }
+.header-title p { font-size: 0.8rem; color: var(--muted); }
+.lang-links { display: flex; gap: 0.5rem; }
+.lang-link { font-size: 0.78rem; color: var(--muted); text-decoration: none; padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: 5px; transition: all 0.15s; }
+.lang-link:hover { background: var(--bg); color: var(--text); }
+
+/* ── Main ── */
+.main { max-width: 960px; margin: 0 auto; padding: 1.75rem 2rem; }
+@media (max-width: 600px) { .main { padding: 1rem; } .header { padding: 1rem; } }
+
+/* ── Section ── */
+.section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.section-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 1.25rem; }
+.section-subtitle { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; font-weight: 400; }
+
+/* ── Big stat cards ── */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+@media (max-width: 500px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1rem; text-align: center; }
+.stat-n { font-size: 2.2rem; font-weight: 700; line-height: 1; margin-bottom: 0.25rem; }
+.stat-n.green { color: var(--b); }
+.stat-n.blue { color: var(--a); }
+.stat-n.grey { color: var(--neither); }
+.stat-pct { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.15rem; }
+.stat-pct.green { color: var(--b); }
+.stat-pct.blue { color: var(--a); }
+.stat-pct.grey { color: var(--neither); }
+.stat-l { font-size: 0.75rem; color: var(--muted); }
+
+/* ── Stacked bar ── */
+.stacked-bar { height: 10px; border-radius: 5px; overflow: hidden; display: flex; margin: 0.4rem 0; }
+.bar-seg { height: 100%; transition: width 0.4s ease; }
+.bar-seg.pipeline { background: var(--b); }
+.bar-seg.basic { background: var(--a); }
+.bar-seg.neither { background: #94a3b8; }
+.bar-legend { display: flex; gap: 1rem; font-size: 0.72rem; color: var(--muted); margin-top: 0.35rem; }
+.bar-legend-item { display: flex; align-items: center; gap: 0.3rem; }
+.bar-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.bar-dot.pipeline { background: var(--b); }
+.bar-dot.basic { background: var(--a); }
+.bar-dot.neither { background: #94a3b8; }
+
+/* ── Language rows ── */
+.lang-row { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.lang-row:last-child { border-bottom: none; }
+.lang-row-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
+.lang-name { font-size: 0.9rem; font-weight: 600; }
+.lang-counts { font-size: 0.78rem; color: var(--muted); }
+.lang-count-badge { display: inline-block; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; margin-left: 0.35rem; }
+.lang-count-badge.pipeline { background: var(--b-bg); color: var(--b); }
+.lang-count-badge.basic { background: var(--a-bg); color: var(--a); }
+.lang-count-badge.neither { background: var(--neither-bg); color: var(--neither); }
+
+/* ── Category table ── */
+.cat-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+.cat-table th { text-align: left; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--border); }
+.cat-table th.right { text-align: right; }
+.cat-table td { padding: 0.7rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.cat-table tr:last-child td { border-bottom: none; }
+.cat-table tr:nth-child(even) td { background: #fafafa; }
+.cat-name { font-weight: 500; }
+.cat-desc { font-size: 0.75rem; color: var(--muted); }
+.mini-bar-wrap { display: flex; align-items: center; gap: 0.5rem; }
+.mini-bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; max-width: 160px; display: flex; }
+.mini-bar .seg { height: 100%; }
+.mini-bar .seg.pipeline { background: var(--b); }
+.mini-bar .seg.basic { background: var(--a); }
+.mini-bar .seg.neither { background: #94a3b8; }
+.mini-counts { font-size: 0.75rem; color: var(--muted); white-space: nowrap; }
+
+/* ── Choice badges ── */
+.badge { display: inline-block; padding: 0.15rem 0.45rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+.badge.pipeline { background: var(--b-bg); color: var(--b); }
+.badge.basic { background: var(--a-bg); color: var(--a); }
+.badge.neither { background: var(--neither-bg); color: var(--neither); }
+
+/* ── Note cards ── */
+.note-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.note-card { border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; background: #fafafa; }
+.note-card-top { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.45rem; flex-wrap: wrap; }
+.note-id { font-family: monospace; font-size: 0.72rem; color: var(--muted); font-weight: 600; }
+.note-text { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
+.note-translation { font-size: 0.83rem; line-height: 1.6; color: var(--text); background: var(--surface); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.6rem 0.8rem; margin-top: 0.5rem; font-style: italic; }
+
+/* ── Callout ── */
+.callout { border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.84rem; margin-bottom: 1rem; line-height: 1.6; }
+.callout.warn { background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-text); }
+.callout.info { background: var(--a-bg); border: 1px solid #bfdbfe; color: #1e40af; }
+.callout.success { background: var(--b-bg); border: 1px solid #a7f3d0; color: #065f46; }
+.callout strong { font-weight: 600; }
+
+/* ── Divider ── */
+.divider-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-title">
+      <h1>Translation Review — Aggregated Results</h1>
+      <p>Pipeline vs. Basic · 3 languages · 64 items</p>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ── Overall stats ── -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-n green">38</div>
+      <div class="stat-pct green">59.4%</div>
+      <div class="stat-l">Pipeline wins</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n blue">16</div>
+      <div class="stat-pct blue">25.0%</div>
+      <div class="stat-l">Basic wins</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n grey">10</div>
+      <div class="stat-pct grey">15.6%</div>
+      <div class="stat-l">Neither (custom)</div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-bottom: 0.5rem;">
+    <div class="bar-legend" style="margin-bottom: 0.6rem;">
+      <div class="bar-legend-item"><div class="bar-dot pipeline"></div>Pipeline</div>
+      <div class="bar-legend-item"><div class="bar-dot basic"></div>Basic</div>
+      <div class="bar-legend-item"><div class="bar-dot neither"></div>Neither</div>
+    </div>
+    <div class="stacked-bar" style="height: 14px; border-radius: 7px;">
+      <div class="bar-seg pipeline" style="width: 59.4%"></div>
+      <div class="bar-seg basic" style="width: 25.0%"></div>
+      <div class="bar-seg neither" style="width: 15.6%"></div>
+    </div>
+    <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem;">64 total items across French, Spanish, and German</div>
+  </div>
+
+  <!-- ── By language ── -->
+  <div class="section">
+    <div class="section-title">Results by Language</div>
+
+    <!-- French -->
+    <div class="lang-row">
+      <div class="lang-row-top">
+        <div class="lang-name">French <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">28 items</span></div>
+        <div class="lang-counts">
+          <span class="lang-count-badge pipeline">22 pipeline</span>
+          <span class="lang-count-badge basic">6 basic</span>
+          <span class="lang-count-badge neither">0 neither</span>
+        </div>
+      </div>
+      <div class="stacked-bar">
+        <div class="bar-seg pipeline" style="width: 78.6%"></div>
+        <div class="bar-seg basic" style="width: 21.4%"></div>
+      </div>
+      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">78.6% pipeline · 21.4% basic · 0% neither — strongest pipeline signal</div>
+    </div>
+
+    <!-- Spanish -->
+    <div class="lang-row">
+      <div class="lang-row-top">
+        <div class="lang-name">Spanish <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">20 items</span></div>
+        <div class="lang-counts">
+          <span class="lang-count-badge pipeline">11 pipeline</span>
+          <span class="lang-count-badge basic">8 basic</span>
+          <span class="lang-count-badge neither">1 neither</span>
+        </div>
+      </div>
+      <div class="stacked-bar">
+        <div class="bar-seg pipeline" style="width: 55%"></div>
+        <div class="bar-seg basic" style="width: 40%"></div>
+        <div class="bar-seg neither" style="width: 5%"></div>
+      </div>
+      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">55% pipeline · 40% basic · 5% neither — competitive, pipeline edges out</div>
+    </div>
+
+    <!-- German -->
+    <div class="lang-row">
+      <div class="lang-row-top">
+        <div class="lang-name">German <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">16 items</span></div>
+        <div class="lang-counts">
+          <span class="lang-count-badge pipeline">5 pipeline</span>
+          <span class="lang-count-badge basic">2 basic</span>
+          <span class="lang-count-badge neither">9 neither</span>
+        </div>
+      </div>
+      <div class="stacked-bar">
+        <div class="bar-seg pipeline" style="width: 31.3%"></div>
+        <div class="bar-seg basic" style="width: 12.5%"></div>
+        <div class="bar-seg neither" style="width: 56.3%"></div>
+      </div>
+      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">31.3% pipeline · 12.5% basic · <strong style="color:var(--neither);">56.3% neither</strong> — reviewer wrote custom translations for most items</div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>
