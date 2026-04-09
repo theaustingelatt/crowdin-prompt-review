@@ -71,7 +71,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .bar-dot.neither { background: #94a3b8; }
 
 /* ── Language rows ── */
-.lang-row { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.lang-row { display: block; padding: 1rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; cursor: pointer; border-radius: 6px; margin: 0 -0.5rem; padding-left: 0.5rem; padding-right: 0.5rem; transition: background 0.15s; }
+.lang-row:hover { background: var(--bg); }
 .lang-row:last-child { border-bottom: none; }
 .lang-row-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
 .lang-name { font-size: 0.9rem; font-weight: 600; }
@@ -174,7 +175,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="section-title">Results by Language</div>
 
     <!-- French -->
-    <div class="lang-row">
+    <a class="lang-row" href="french.html">
       <div class="lang-row-top">
         <div class="lang-name">French <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">28 items</span></div>
         <div class="lang-counts">
@@ -188,10 +189,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="bar-seg basic" style="width: 21.4%"></div>
       </div>
       <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">78.6% pipeline · 21.4% basic · 0% neither — strongest pipeline signal</div>
-    </div>
+    </a>
 
     <!-- Spanish -->
-    <div class="lang-row">
+    <a class="lang-row" href="spanish.html">
       <div class="lang-row-top">
         <div class="lang-name">Spanish <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">20 items</span></div>
         <div class="lang-counts">
@@ -206,10 +207,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="bar-seg neither" style="width: 5%"></div>
       </div>
       <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">55% pipeline · 40% basic · 5% neither — competitive, pipeline edges out</div>
-    </div>
+    </a>
 
     <!-- German -->
-    <div class="lang-row">
+    <a class="lang-row" href="german.html">
       <div class="lang-row-top">
         <div class="lang-name">German <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">16 items</span></div>
         <div class="lang-counts">
@@ -224,7 +225,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="bar-seg neither" style="width: 56.3%"></div>
       </div>
       <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">31.3% pipeline · 12.5% basic · <strong style="color:var(--neither);">56.3% neither</strong> — reviewer wrote custom translations for most items</div>
-    </div>
+    </a>
   </div>
 
 
