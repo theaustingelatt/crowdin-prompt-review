@@ -126,32 +126,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 </head>
 <body>
 
-<div class="header">
-  <div class="header-inner">
-    <div class="header-title">
-      <h1>Translation Review — Aggregated Results</h1>
-      <p>Pipeline vs. Basic · 3 languages · 64 items</p>
-    </div>
-  </div>
-</div>
-
 <div class="main">
 
-  <!-- ── Overall stats ── -->
+  <!-- ── Overall stats (excluding Bible copy / C strings) ── -->
+  <div class="divider-label" style="margin-bottom: 0.75rem;">All Items - 44 Total</div>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-n green">38</div>
-      <div class="stat-pct green">59.4%</div>
+      <div class="stat-n green">30</div>
+      <div class="stat-pct green">68.2%</div>
       <div class="stat-l">Pipeline wins</div>
     </div>
     <div class="stat-card">
-      <div class="stat-n blue">16</div>
-      <div class="stat-pct blue">25.0%</div>
+      <div class="stat-n blue">7</div>
+      <div class="stat-pct blue">15.9%</div>
       <div class="stat-l">Basic wins</div>
     </div>
     <div class="stat-card">
-      <div class="stat-n grey">10</div>
-      <div class="stat-pct grey">15.6%</div>
+      <div class="stat-n grey">7</div>
+      <div class="stat-pct grey">15.9%</div>
       <div class="stat-l">Neither (custom)</div>
     </div>
   </div>
@@ -163,68 +155,66 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="bar-legend-item"><div class="bar-dot neither"></div>Neither</div>
     </div>
     <div class="stacked-bar" style="height: 14px; border-radius: 7px;">
-      <div class="bar-seg pipeline" style="width: 59.4%"></div>
-      <div class="bar-seg basic" style="width: 25.0%"></div>
-      <div class="bar-seg neither" style="width: 15.6%"></div>
+      <div class="bar-seg pipeline" style="width: 68.2%"></div>
+      <div class="bar-seg basic" style="width: 15.9%"></div>
+      <div class="bar-seg neither" style="width: 15.9%"></div>
     </div>
-    <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem;">64 total items across French, Spanish, and German</div>
+    <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem;">44 total items — Bible verse strings excluded (B and select C strings)</div>
   </div>
-
-  <!-- ── By language ── -->
+  <!-- ── By language (excluding Bible verses) ── -->
   <div class="section">
-    <div class="section-title">Results by Language</div>
-
-    <!-- French -->
-    <a class="lang-row" href="https://theaustingelatt.github.io/crowdin-prompt-review/french.html?tech#eyJGUl9CMDAxIjoiYmFzaWMiLCJGUl9CMDAyIjoiYmFzaWMiLCJGUl9CMDAzIjoiYmFzaWMiLCJGUl9CMDA0IjoicGlwZWxpbmUiLCJGUl9CMDA1IjoiYmFzaWMiLCJGUl9UMDAxIjoicGlwZWxpbmUiLCJGUl9UMDAyIjoiYmFzaWMiLCJGUl9UMDAzIjoicGlwZWxpbmUiLCJGUl9UMDA0IjoicGlwZWxpbmUiLCJGUl9UMDA1IjoicGlwZWxpbmUiLCJGUl9JMDAxIjoicGlwZWxpbmUiLCJGUl9JMDAyIjoicGlwZWxpbmUiLCJGUl9JMDAzIjoiYmFzaWMiLCJGUl9JMDA0IjoicGlwZWxpbmUiLCJGUl9TMDAxIjoicGlwZWxpbmUiLCJGUl9TMDAyIjoicGlwZWxpbmUiLCJGUl9TMDAzIjoicGlwZWxpbmUiLCJGUl9HMDAxIjoicGlwZWxpbmUiLCJGUl9HMDAyIjoicGlwZWxpbmUiLCJGUl9HMDAzIjoicGlwZWxpbmUiLCJGUl9HMDA0IjoicGlwZWxpbmUiLCJGUl9DMDAxIjoicGlwZWxpbmUiLCJGUl9DMDAyIjoicGlwZWxpbmUiLCJGUl9DMDAzIjoicGlwZWxpbmUiLCJGUl9DMDA0IjoicGlwZWxpbmUiLCJGUl9DMDA1IjoicGlwZWxpbmUiLCJGUl9DMDA2IjoicGlwZWxpbmUiLCJGUl9DMDA3IjoicGlwZWxpbmUifQ==">
+    <div class="section-title">Results by Language (excluding Bible verses)</div>
+    <!-- French (no bible strings) -->
+    <a class="lang-row" href="https://theaustingelatt.github.io/crowdin-prompt-review/french.html?tech#eyJGUl9CMDAxIjoiYmFzaWMiLCJGUl9CMDAyIjoiYmFzaWMiLCJGUl9CMAAzIjoiYmFzaWMiLCJGUl9CMDA0IjoicGlwZWxpbmUiLCJGUl9CMDA1IjoiYmFzaWMiLCJGUl9UMDAxIjoicGlwZWxpbmUiLCJGUl9UMAAyIjoiYmFzaWMiLCJGUl9UMAAzIjoicGlwZWxpbmUiLCJGUl9UMDA0IjoicGlwZWxpbmUiLCJGUl9UMDA1IjoicGlwZWxpbmUiLCJGUl9JMDAxIjoicGlwZWxpbmUiLCJGUl9JMAAyIjoicGlwZWxpbmUiLCJGUl9JMAAzIjoiYmFzaWMiLCJGUl9JMDA0IjoicGlwZWxpbmUiLCJGUl9TMDAxIjoicGlwZWxpbmUiLCJGUl9TMAAyIjoicGlwZWxpbmUiLCJGUl9TMAAzIjoicGlwZWxpbmUiLCJGUl9HMDAxIjoicGlwZWxpbmUiLCJGUl9HMAAyIjoicGlwZWxpbmUiLCJGUl9HMAAzIjoicGlwZWxpbmUiLCJGUl9HMDA0IjoicGlwZWxpbmUiLCJGUl9DMDAxIjoicGlwZWxpbmUiLCJGUl9DMAAyIjoicGlwZWxpbmUiLCJGUl9DMAAzIjoicGlwZWxpbmUiLCJGUl9DMDA0IjoicGlwZWxpbmUiLCJGUl9DMDA1IjoicGlwZWxpbmUiLCJGUl9DMAA2IjoicGlwZWxpbmUiLCJGUl9DMAA3IjoicGlwZWxpbmUifQ==">
       <div class="lang-row-top">
-        <div class="lang-name">French <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">28 items</span></div>
+        <div class="lang-name">French <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">21 items</span></div>
         <div class="lang-counts">
-          <span class="lang-count-badge pipeline">22 pipeline</span>
-          <span class="lang-count-badge basic">6 basic</span>
+          <span class="lang-count-badge pipeline">19 pipeline</span>
+          <span class="lang-count-badge basic">2 basic</span>
           <span class="lang-count-badge neither">0 neither</span>
         </div>
       </div>
       <div class="stacked-bar">
-        <div class="bar-seg pipeline" style="width: 78.6%"></div>
-        <div class="bar-seg basic" style="width: 21.4%"></div>
+        <div class="bar-seg pipeline" style="width: 90.5%"></div>
+        <div class="bar-seg basic" style="width: 9.5%"></div>
       </div>
-      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">78.6% pipeline · 21.4% basic · 0% neither — strongest pipeline signal</div>
+      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">90.5% pipeline · 9.5% basic · 0% neither</div>
     </a>
 
-    <!-- Spanish -->
+    <!-- Spanish (no bible strings) -->
     <a class="lang-row" href="https://theaustingelatt.github.io/crowdin-prompt-review/spanish.html?tech#eyJFU19CMDAxIjp7InNvdXJjZSI6ImJhc2ljIiwibm90ZSI6Ik1vcmUgbmF0dXJhbCBhbmQgZXZlcnlkYXkgbGFuZ3VhZ2UifSwiRVNfQjAwMiI6eyJzb3VyY2UiOiJiYXNpYyIsIm5vdGUiOiJNb3JlIHVuZGVyc3RhbmRhYmxlIGFuZCByZWxhdGFibGUifSwiRVNfQjAwNCI6eyJzb3VyY2UiOiJiYXNpYyIsIm5vdGUiOiJNb3JlIGNsZWFyIGFuZCB1cC10by1kYXRlIn0sIkVTX0IwMDUiOnsic291cmNlIjoicGlwZWxpbmUiLCJub3RlIjoiTW9yZSByZWxhdGFibGUgYW5kIHVwLXRvLWRhdGUifSwiRVNfVDAwNCI6eyJzb3VyY2UiOiJiYXNpYyIsIm5vdGUiOiJNb3JlIG5hdHVyYWwifSwiRVNfVDAwNSI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJNb3JlIG5hdHVyYWwgYW5kIHJlbGF0YWJsZSJ9LCJFU19JMDAxIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IkEgbW9yZSBuYXR1cmFsIGFuZCBhY2N1cmF0ZSB0cmFuc2xhdGlvbiB3aXRoIGNvcnJlY3QgZ3JhbW1hciJ9LCJFU19JMDAyIjp7InNvdXJjZSI6ImJhc2ljIiwibm90ZSI6Ik1vcmUgcGVyc29uYWwifSwiRVNfSTAwMyI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJNb3JlIGNvbW1vbiJ9LCJFU19JMDA0Ijp7InNvdXJjZSI6ImJhc2ljIiwibm90ZSI6Ik1vcmUgY29tbW9uIn0sIkVTX1MwMDIiOnsic291cmNlIjoicGlwZWxpbmUiLCJub3RlIjoiTW9yZSBmYW1pbGlhciBhbmQgcGVyc29uYWwifSwiRVNfRzAwMSI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJNb3JlIGZhbWlsaWFyIGFuZCBwZXJzb25hbCJ9LCJFU19HMDAyIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IlRoZSB0cmFuc2xhdGlvbiBpcyBlc3NlbnRpYWxseSB0aGUgc2FtZSwgaXQgb25seSBkaWZmZXJzIGJ5IG9uZSBjYXBpdGFsIGxldHRlciwgd2hpY2ggaXNu4oCZdCBjcnVjaWFsLiBVc2luZyBhIGNhcGl0YWwgbWlnaHQgYmUgc2xpZ2h0bHkgYmV0dGVyIGJlY2F1c2UgaXQgZHJhd3MgbW9yZSBhdHRlbnRpb24sIGJ1dCB0aGUgZGlmZmVyZW5jZSBpcyBtaW5vci4ifSwiRVNfRzAwNCI6eyJzb3VyY2UiOiJiYXNpYyIsIm5vdGUiOiJNb3JlIGZhbWlsaWFyIGFuZCBwZXJzb25hbCJ9LCJFU19DMDAxIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6Ik1vcmUgZGlyZWN0LCBwZXJzb25hbCwgYW5kIG5hdHVyYWwifSwiRVNfQzAwMiI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJJdOKAmXMgbW9yZSBkaXJlY3QsIHBlcnNvbmFsLCBhbmQgcmVsYXRhYmxlLiJ9LCJFU19DMDAzIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6Ikl04oCZcyBtb3JlIGRpcmVjdCBhbmQgcGVyc29uYWwifSwiRVNfQzAwNCI6eyJzb3VyY2UiOiJiYXNpYyIsIm5vdGUiOiJJdOKAmXMgbW9yZSBkaXJlY3QsIHBlcnNvbmFsLCBhbmQgcmVsYXRhYmxlLiJ9LCJFU19DMDA1Ijp7InNvdXJjZSI6Im5laXRoZXIiLCJub3RlIjoiVGhlIHdvcmRzIFwiYnVzY2FcIiBhbmQgXCJlbmN1ZW50cmFcIiBzb3VuZCBsaWtlIHlvdSBuZWVkIHRvIHN0YXJ0IGEgZnJpZW5kc2hpcCB3aXRoIHNvbWVvbmUgbmV3IHRvIGRvIGl0LiBUaGUgY2xvc2VzdCBhbmQgbW9zdCBhY2N1cmF0ZSB0cmFuc2xhdGlvbiBpcyB0aGlz4oCmXCLCv1kgc2kgdMO6IGZ1ZXJhcyBsYSByZXNwdWVzdGEgcXVlIGFsZ3VpZW4gaGEgZXN0YWRvIGVzcGVyYW5kbz8gRWxpZ2UgYSB1bm8gZGUgdHVzIGFtaWdvcyB5IGNvbWllbnphIGVzYSBjb252ZXJzYWNpw7NuIGhveS5cIiJ9LCJFU19DMDA3Ijp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IlN0aWxsLCB0aGVyZeKAmXMgbm8gcmVhbCBkaWZmZXJlbmNlIGJldHdlZW4gdGhlIHRyYW5zbGF0aW9ucy4gVGhlIG9ubHkgZGlmZmVyZW5jZSBpcyBhIGNhcGl0YWwgbGV0dGVyLCB3aGljaCBkb2VzbuKAmXQgYWZmZWN0IHRoZSB0cmFuc2xhdGlvbiBhdCBhbGwuIEkgY2hvc2UgdGhlIG9uZSB3aXRoIHRoZSBjYXBpdGFsIHRvIHZhbHVlIHRoZSBzcGVsbGluZywgYnV0IGl04oCZcyBub3QgYSBiaWcgZGVhbC4ifX0=">
       <div class="lang-row-top">
-        <div class="lang-name">Spanish <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">20 items</span></div>
+        <div class="lang-name">Spanish <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">14 items</span></div>
         <div class="lang-counts">
-          <span class="lang-count-badge pipeline">11 pipeline</span>
-          <span class="lang-count-badge basic">8 basic</span>
+          <span class="lang-count-badge pipeline">9 pipeline</span>
+          <span class="lang-count-badge basic">4 basic</span>
           <span class="lang-count-badge neither">1 neither</span>
         </div>
       </div>
       <div class="stacked-bar">
-        <div class="bar-seg pipeline" style="width: 55%"></div>
-        <div class="bar-seg basic" style="width: 40%"></div>
-        <div class="bar-seg neither" style="width: 5%"></div>
+        <div class="bar-seg pipeline" style="width: 64.3%"></div>
+        <div class="bar-seg basic" style="width: 28.6%"></div>
+        <div class="bar-seg neither" style="width: 7.1%"></div>
       </div>
-      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">55% pipeline · 40% basic · 5% neither — competitive, pipeline edges out</div>
+      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">64.3% pipeline · 28.6% basic · 7.1% neither</div>
     </a>
 
-    <!-- German -->
-    <a class="lang-row" href="https://theaustingelatt.github.io/crowdin-prompt-review/german.html?tech#eyJERV9CMDAxIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IkEgaXMgY2xvc2VzdCB0byB0aGUgTkdVIEJpYmxlIHRyYW5zbGF0aW9uLCBCIGlzIHRoZSBkaXJlY3QgdHJhbnNsYXRpb24gb2YgdGhlIEVuZ2xpc2ggdmVyc2UuXG4ifSwiREVfQjAwMiI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJ0aGlzIGlzIHRoZSBzYW1lIGFzIHRoZSBOR1UyMDExIHRyYW5zbGF0aW9uIChOZXUgR2VuZWZlciDDnGJlcnNldHp1bmcpIn0sIkRFX0IwMDMiOnsic291cmNlIjoibmVpdGhlciIsIm5vdGUiOiJEZXIgSEVSUiBpc3QgbWVpbiBIaXJ0ZTsgbWlyIHdpcmQgbmljaHRzIG1hbmdlbG4uIChQc2FsbSAyMywxKSJ9LCJERV9CMDA0Ijp7InNvdXJjZSI6ImJhc2ljIiwibm90ZSI6InN1aXRzIHNvY2lhbCBtZWRpYSBtb3JlLCBtb3JlIHNpbXBsZSAifSwiREVfQjAwNSI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJzdWl0cyBzb2NpYWwgbWVkaWEgbW9yZSwgbW9yZSBzaW1wbGUgIn0sIkRFX1QwMDEiOnsic291cmNlIjoibmVpdGhlciIsIm5vdGUiOiJXYXMsIHdlbm4gZHUgZGllIEFudHdvcnQgYmlzdCwgYXVmIGRpZSBqZW1hbmQgc2Nob24gbGFuZ2Ugd2FydGV0PyAtIGJldHRlciBmb3Igc29jaWFsIG1lZGlhLCBjbG9zZXIgdG8gZW5nbGlzaCBzZW50ZW5jZSJ9LCJERV9UMDAzIjp7InNvdXJjZSI6Im5laXRoZXIiLCJub3RlIjoiSGFzdCBkdSBkaWNoIHNjaG9uIG1hbCBzbyBnZWbDvGhsdCwgYWxzIHfDvHJkZXN0IGR1IG5pY2h0IGRhenVnZWjDtnJlbj8ifSwiREVfVDAwNCI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6IkZhbmcgaGV1dGUgZWluIEdlc3Byw6RjaCBhbi4gLUIgd29ya3MgdG9vLCBidXQgdGhpcyBpcyBtb3JlIG5hdHVyYWwifSwiREVfSTAwMSI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6IkR1IHNwcmljaHN0IGVzIGFuIHVuZOKApiBTdGlsbGUuICJ9LCJERV9JMDA0Ijp7InNvdXJjZSI6ImJhc2ljIiwibm90ZSI6IiJ9LCJERV9TMDAxIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IiJ9LCJERV9HMDAyIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IiJ9LCJERV9DMDAxIjp7InNvdXJjZSI6Im5laXRoZXIiLCJub3RlIjoiTWFya2llcmUgZWluZW4gRnJldW5kLCBkZXIgZGFzIGjDtnJlbiBtdXNzLiDigJ5Lb21tdCBhbGxlIGhlciB6dSBtaXIsIGRpZSBpaHIgbcO4ZGUgc2VpZCB1bmQgc2Nod2VyZSBMYXN0ZW4gdHJhZ3Q7IGljaCB3ZXJkZSBldWNoIFJ1aGUgc2NoZW5rZW4u4oCcIChNYXR0aMOkdXMgMTEsMjgpIC0gR2VybWFuIHF1b3RhdGlvbiBtYXJrcyBzdGFydCB3aXRoIGEgcGFpciBhdCB0aGUgYm90dG9tIGFuZCBlbmRzIHdpdGggYSBwYWlyIGF0IHRoZSB0b3AsIEkgbWF0Y2hlZCB0aGUgYmlibGUgdHJhbnNsYXRpb24gdG8gdGhlIGNob2ljZSBhYm92ZSJ9LCJERV9DMDAyIjp7InNvdXJjZSI6Im5laXRoZXIiLCJub3RlIjoiRHUgc3ByaWNoc3QgZXMgYW4gdW5k4oCmIFN0aWxsZS4gRmFuZyBkYXMgR2VzcHLDpGNoIGFuLiBNdW5kcHJvcGFnYW5kYSBmdW5rdGlvbmllcnQgaW1tZXIgbm9jaC4ifSwiREVfQzAwNCI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6Ikhhc3QgZHUgZGljaCBzY2hvbiBtYWwgc28gZ2Vmw7xobHQsIGFscyB3w7xyZGVzdCBkdSBuaWNodCBkYXp1Z2Vow7ZyZW4/IER1IGJpc3QgZGFtaXQgbmljaHQgYWxsZWluLiDigJ5XaXIgd2lzc2VuIGFiZXIsIGRhc3MgZGVuZW4sIGRpZSBHb3R0IGxpZWJlbiwgYWxsZSBEaW5nZSB6dW0gQmVzdGVuIGRpZW5lbi7igJwgUsO2bWVyIDgsMjgifSwiREVfQzAwNSI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6Ildhcywgd2VubiBkdSBkaWUgQW50d29ydCBiaXN0LCBhdWYgZGllIGplbWFuZCBzY2hvbiBsYW5nZSB3YXJ0ZXQ/IFNwcmljaCBtaXQgZWluZW0gRnJldW5kIHVuZCBmYW5nIGhldXRlIGRpZXNlcyBHZXNwcsOkY2ggYW4uICJ9fQ==">
+    <!-- German (no bible strings) -->
+    <a class="lang-row" href="https://theaustingelatt.github.io/crowdin-prompt-review/german.html?tech#eyJERV9CMDAxIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IkEgaXMgY2xvc2VzdCB0byB0aGUgTkdVIEJpYmxlIHRyYW5zbGF0aW9uLCBCIGlzIHRoZSBkaXJlY3QgdHJhbnNsYXRpb24gb2YgdGhlIEVuZ2xpc2ggdmVyc2UuXG4ifSwiREVfQjAwMiI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJ0aGlzIGlzIHRoZSBzYW1lIGFzIHRoZSBOR1UyMDExIHRyYW5zbGF0aW9uIChOZXUgR2VuZWZlciDDnGJlcnNldHp1bmcpIn0sIkRFX0IwMDMiOnsic291cmNlIjoibmVpdGhlciIsIm5vdGUiOiJEZXIgSEVSUiBpc3QgbWVpbiBIaXJ0ZTsgbWlyIHdpcmQgbmljaHRzIG1hbmdlbG4uIChQc2FsbSAyMywxKSJ9LCJERV9CMDA0Ijp7InNvdXJjZSI6ImJhc2ljIiwibm90ZSI6InN1aXRzIHNvY2lhbCBtZWRpYSBtb3JlLCBtb3JlIHNpbXBsZSAifSwiREVfQjAwNSI6eyJzb3VyY2UiOiJwaXBlbGluZSIsIm5vdGUiOiJzdWl0cyBzb2NpYWwgbWVkaWEgbW9yZSwgbW9yZSBzaW1wbGUgIn0sIkRFX1QwMDEiOnsic291cmNlIjoibmVpdGhlciIsIm5vdGUiOiJXYXMsIHdlbm4gZHUgZGllIEFudHdvcnQgYmlzdCwgYXVmIGRpZSBqZW1hbmQgc2Nob24gbGFuZ2Ugd2FydGV0PyAtIGJldHRlciBmb3Igc29jaWFsIG1lZGlhLCBjbG9zZXIgdG8gZW5nbGlzaCBzZW50ZW5jZSJ9LCJERV9UMAAzIjp7InNvdXJjZSI6Im5laXRoZXIiLCJub3RlIjoiSGFzdCBkdSBkaWNoIHNjaG9uIG1hbCBzbyBnZWbDvGhsdCwgYWxzIHfDvHJkZXN0IGR1IG5pY2h0IGRhenVnZWjDtnJlbj8ifSwiREVfVDAwNCI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6IkZhbmcgaGV1dGUgZWluIEdlc3Byw6RjaCBhbi4gLUIgd29ya3MgdG9vLCBidXQgdGhpcyBpcyBtb3JlIG5hdHVyYWwifSwiREVfSTAwMSI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6IkR1IHNwcmljaHN0IGVzIGFuIHVuZOKApiBTdGlsbGUuICJ9LCJERV9JMDA0Ijp7InNvdXJjZSI6ImJhc2ljIiwibm90ZSI6IiJ9LCJERV9TMDAxIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IiJ9LCJERV9HMAAyIjp7InNvdXJjZSI6InBpcGVsaW5lIiwibm90ZSI6IiJ9LCJERV9DMDAxIjp7InNvdXJjZSI6Im5laXRoZXIiLCJub3RlIjoiTWFya2llcmUgZWluZW4gRnJldW5kLCBkZXIgZGFzIGjDtnJlbiBtdXNzLiDigJ5Lb21tdCBhbGxlIGhlciB6dSBtaXIsIGRpZSBpaHIgbcO4ZGUgc2VpZCB1bmQgc2Nod2VyZSBMYXN0ZW4gdHJhZ3Q7IGljaCB3ZXJkZSBldWNoIFJ1aGUgc2NoZW5rZW4u4oCcIChNYXR0aMOkdXMgMTEsMjgpIC0gR2VybWFuIHF1b3RhdGlvbiBtYXJrcyBzdGFydCB3aXRoIGEgcGFpciBhdCB0aGUgYm90dG9tIGFuZCBlbmRzIHdpdGggYSBwYWlyIGF0IHRoZSB0b3AsIEkgbWF0Y2hlZCB0aGUgYmlibGUgdHJhbnNsYXRpb24gdG8gdGhlIGNob2ljZSBhYm92ZSJ9LCJERV9DMAAyIjp7InNvdXJjZSI6Im5laXRoZXIiLCJub3RlIjoiRHUgc3ByaWNoc3QgZXMgYW4gdW5k4oCmIFN0aWxsZS4gRmFuZyBkYXMgR2VzcHLDpGNoIGFuLiBNdW5kcHJvcGFnYW5kYSBmdW5rdGlvbmllcnQgaW1tZXIgbm9jaC4ifSwiREVfQzAwNCI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6Ikhhc3QgZHUgZGljaCBzY2hvbiBtYWwgc28gZ2Vmw7xobHQsIGFscyB3w7xyZGVzdCBkdSBuaWNodCBkYXp1Z2Vow7ZyZW4/IER1IGJpc3QgZGFtaXQgbmljaHQgYWxsZWluLiDigJ5XaXIgd2lzc2VuIGFiZXIsIGRhc3MgZGVuZW4sIGRpZSBHb3R0IGxpZWJlbiwgYWxsZSBEaW5nZSB6dW0gQmVzdGVuIGRpZW5lbi7igJwgUsO2bWVyIDgsMjgifSwiREVfQzAwNSI6eyJzb3VyY2UiOiJuZWl0aGVyIiwibm90ZSI6Ildhcywgd2VubiBkdSBkaWUgQW50d29ydCBiaXN0LCBhdWYgZGllIGplbWFuZCBzY2hvbiBsYW5nZSB3YXJ0ZXQ/IFNwcmljaCBtaXQgZWluZW0gRnJldW5kIHVuZCBmYW5nIGhldXRlIGRpZXNlcyBHZXNwcsOkY2ggYW4uICJ9fQ==">
       <div class="lang-row-top">
-        <div class="lang-name">German <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">16 items</span></div>
+        <div class="lang-name">German <span style="font-size:0.78rem; font-weight:400; color:var(--muted);">9 items</span></div>
         <div class="lang-counts">
-          <span class="lang-count-badge pipeline">5 pipeline</span>
-          <span class="lang-count-badge basic">2 basic</span>
-          <span class="lang-count-badge neither">9 neither</span>
+          <span class="lang-count-badge pipeline">2 pipeline</span>
+          <span class="lang-count-badge basic">1 basic</span>
+          <span class="lang-count-badge neither">6 neither</span>
         </div>
       </div>
       <div class="stacked-bar">
-        <div class="bar-seg pipeline" style="width: 31.3%"></div>
-        <div class="bar-seg basic" style="width: 12.5%"></div>
-        <div class="bar-seg neither" style="width: 56.3%"></div>
+        <div class="bar-seg pipeline" style="width: 22.2%"></div>
+        <div class="bar-seg basic" style="width: 11.1%"></div>
+        <div class="bar-seg neither" style="width: 66.7%"></div>
       </div>
-      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">31.3% pipeline · 12.5% basic · <strong style="color:var(--neither);">56.3% neither</strong> — reviewer wrote custom translations for most items</div>
+      <div style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem;">22.2% pipeline · 11.1% basic · <strong style="color:var(--neither);">66.7% neither</strong> — reviewer wrote custom translations for most items</div>
     </a>
   </div>
 
